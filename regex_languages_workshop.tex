@@ -1,0 +1,95 @@
+\documentclass{beamer}
+\mode<presentation>{\usetheme{CambridgeUS}}
+\usecolortheme{beaver}
+\usepackage{caption}
+\beamertemplatenavigationsymbolsempty
+\usepackage{fancybox}
+\usepackage{csquotes}
+
+\usepackage{pst-node}
+\psset{arrowscale=2,arrows=->}
+\def\VPh{\vphantom{\displaystyle\sum_{i=n}^m {i^2}}}
+\def\psBox#1#2{\psframebox[fillcolor=#1,fillstyle=solid]{\VPh\displaystyle#2}}
+
+\title{Intro to Automata and Languages}
+\institute[]{An hour-long explanation of Dave's ``Well actually"}
+\date{\today}
+
+
+\begin{document}
+
+\begin{frame}
+	\titlepage
+\end{frame}
+
+\section*{Outline}
+\begin{frame}
+	\frametitle{Outline}
+	\tableofcontents
+
+\end{frame}
+
+\section*{Preliminaries}
+\begin{frame}
+	\frametitle{What is a language?}
+	
+
+\end{frame}
+
+\section*{Finite Automata}
+\begin{frame}
+	\frametitle{What are automata?}
+	The formal definition of a finite automaton is a 5-tuple 
+	$(Q, \Sigma, \delta, q_0, F)$ where:
+	
+	\begin{itemize}
+	\item $Q = $ no one cares
+	\item $\Sigma = $ this one's actually kind of useful, it denotes the alphabet being used
+	\item $\delta: Q \times \Sigma \rightarrow Q  = $ you will never use this 
+	\item $q_0 = $  lame
+	\item $F = $ whatever
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{What are automata?}
+
+	\begin{figure}
+		\includegraphics[scale=0.3]{introdfa.png}
+	\end{figure}	
+\end{frame}
+
+%-------------------------------------------------------------------
+
+\section*{Regular Languages}
+
+\begin{frame}
+	\frametitle{What are regular languages?}
+\end{frame}
+
+
+
+%-------------------------------------------------------------------
+
+
+\section*{Automata $\iff$ Regular Languages}
+\begin{frame}
+	\frametitle{From automata to regex}
+\end{frame}
+%-------------------------------------------------------------------
+
+
+\section*{What can('t) RegExs do?}
+
+\begin{frame}
+	\frametitle{So about that ``well actually"...}
+\end{frame}
+
+\begin{frame}
+	\frametitle{But we still need more}
+\end{frame}
+
+%-------------------------------------------------------------------
+
+\end{document}
