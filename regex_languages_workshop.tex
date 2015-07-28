@@ -6,13 +6,15 @@
 \usepackage{fancybox}
 \usepackage{csquotes}
 
+\newenvironment{myfont}{\fontfamily{LinuxLibertineT-OsF}\selectfont}{\par}
+
 \usepackage{pst-node}
 \psset{arrowscale=2,arrows=->}
 \def\VPh{\vphantom{\displaystyle\sum_{i=n}^m {i^2}}}
 \def\psBox#1#2{\psframebox[fillcolor=#1,fillstyle=solid]{\VPh\displaystyle#2}}
 
 \title{Intro to Automata and Languages}
-\institute[]{An hour-long explanation of Dave's ``Well actually"}
+\institute[Recurse Center]{An hour-long explanation of Dave's ``well actually"}
 \date{\today}
 
 
@@ -29,11 +31,23 @@
 
 \end{frame}
 
-\section*{Preliminaries}
+\section*{Languages}
 \begin{frame}
 	\frametitle{What is a language?}
+	A language is a set of strings over some alphabet
+	\begin{itemize}
+		\item $\Sigma $ denotes the alphabet
+		\item $\mathcal{L}$ denotes the language over that alphabet	
+	\end{itemize}
 	
-
+	\vspace{0.3in}
+	Examples:\\
+	\begin{itemize}
+	\item $\Sigma = \{0, 1\}$, $\mathcal{L} = \{ 01, 10, 101, 010 \}$\\
+	\item $\Sigma = \{0, 1\}$, $\mathcal{L} = \Sigma ^{*}$ \\
+	\item $\Sigma = \{a, b, c\}$, $\mathcal{L} = a^* b^* c^* $ \\
+	\item $\Sigma = \{Expr, Operator, Open, Close\}$, $\mathcal{L} = \{Expr, Expr\; Operator\; Expr, Open\; Expr\; Close \}$
+	\end{itemize}
 \end{frame}
 
 \section*{Finite Automata}
@@ -44,7 +58,7 @@
 	
 	\begin{itemize}
 	\item $Q = $ no one cares
-	\item $\Sigma = $ this one's actually kind of useful, it denotes the alphabet being used
+	\item $\Sigma = $ already talked about this
 	\item $\delta: Q \times \Sigma \rightarrow Q  = $ you will never use this 
 	\item $q_0 = $  lame
 	\item $F = $ whatever
@@ -53,43 +67,231 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{What are automata?}
+	\frametitle{What are deterministic finite automata?}
 
 	\begin{figure}
 		\includegraphics[scale=0.3]{introdfa.png}
 	\end{figure}	
 \end{frame}
 
-%-------------------------------------------------------------------
-
-\section*{Regular Languages}
 
 \begin{frame}
-	\frametitle{What are regular languages?}
+	\frametitle{What are non-deterministic finite automata?}
+	
+	\begin{figure}
+		\includegraphics[scale=0.6]{nondblacksheep.png}
+	\end{figure}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Do they describe different languages?}
+\centering \large{\textbf{NO}}
+
+\end{frame}
+
+%------
+
+\begin{frame}
+
+Time for exercises!
+
+\vspace{0.2in}
+
+1. Draw a DFA that describes the language $\mathcal{L} = \{ x \in \{a, b\}^* | x \text{ contains ab as a substring} \}$
+
+\pause
+
+\begin{figure}
+\includegraphics[scale=0.5]{absub.png}
+\end{figure}
+
+\end{frame}
+
+%-----------------
+
+\begin{frame}
+
+Time for exercises!
+
+\vspace{0.2in}
+
+2. Draw a DFA that describes the language $\mathcal{L} = \{ x \in \{0,1\}^* | x \text{ has an odd number of 1's and an even number of 0's} \}$
+
+\pause
+
+\begin{figure}
+\includegraphics[scale=0.4]{evenodd.png}
+\end{figure}
+
 \end{frame}
 
 
-
-%-------------------------------------------------------------------
-
+%----------------------------------------------------------
 
 \section*{Automata $\iff$ Regular Languages}
+
 \begin{frame}
-	\frametitle{From automata to regex}
+	\frametitle{Automata $\rightarrow $ regex}
+	\begin{figure}
+	\centering \includegraphics[scale=0.43]{rigour.png}
+	\end{figure}
+\end{frame}	
+	
+
+\begin{frame}
+	\frametitle{Automata $\rightarrow $ regex}
+	\begin{figure}
+	\centering \includegraphics[scale=0.43]{rigor1.png}
+	\end{figure}
+\end{frame}	
+		
+
+\begin{frame}
+	\frametitle{Automata $\rightarrow $ regex}
+	\begin{figure}
+	\centering \includegraphics[scale=0.43]{rigour2.png}
+	\end{figure}
+\end{frame}	
+
+\begin{frame}
+	\frametitle{Automata $\rightarrow $ regex}
+	\begin{figure}
+	\centering \includegraphics[scale=0.43]{rigour3.png}
+	\end{figure}
+\end{frame}	
+
+\begin{frame}
+	\frametitle{Automata $\rightarrow $ regex}
+	\begin{figure}
+	\centering \includegraphics[scale=0.43]{rigour4.png}
+	\end{figure}
+\end{frame}			
+	
+	
+\begin{frame}
+	\frametitle{Automata $\rightarrow $ regex}
+	\begin{figure}
+	\centering \includegraphics[scale=0.43]{rigour5.png}
+	\end{figure}
+	
+	\pause 
+	
+	[Rr]igo(ur$|$r)
+	
+	\pause
+		
+	[Rr]igou?r \\
+\end{frame}			
+
+
+\begin{frame}
+	\frametitle{Automata $\rightarrow $ regex}
+	\vspace{-0.4in}
+	\begin{figure}
+	\centering \includegraphics[scale=0.31]{emails.png}
+	\end{figure}
+	
+	\pause
+	\vspace{-0.2in}
+	Matches email addresses 
+	
+
+\string^([a-z 0-9\_\textbackslash. -]$+$)@([\textbackslash da-z\textbackslash. -]$+$)\textbackslash.([a-z\textbackslash.]\{2,6\})\$
+
 \end{frame}
+
 %-------------------------------------------------------------------
 
-
-\section*{What can('t) RegExs do?}
+\section*{What can't finite automata do?}
 
 \begin{frame}
-	\frametitle{So about that ``well actually"...}
+\frametitle{Things finite automata cannot do}
+
+\begin{itemize}
+\item Match balanced parentheses
+\vspace{0.2in}
+\item Match expressions that are made out of combining expressions that were made out of combining expressions that ....
+\vspace{0.2in}
+\item Match palindromes
+\vspace{0.2in}
+\item Match composite numbers
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{So about that ``well actually"}
+	\begin{center}
+In much of the computing world \\
+\textbf{Regular Expressions $\neq $ Regular Languages}
+
+	\end{center}
+	\vspace{0.2in}
+	People who might assume equality:\\
+	\begin{itemize}
+	\item computer science theory professors
+	\item computer science theory enthusiasts
+	\item computer science theory students
+	\item computer science theory [a-z]+
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{So about that ``well actually"}
+	\begin{center}
+	``Well actually, Tom, because many regular expression engines support back references, they can represent context-free languages too,"\\
+	- Dave Albert
+	\end{center}
 \end{frame}
 
 \begin{frame}
-	\frametitle{But we still need more}
+\frametitle{Regexs = regular languages + other stuff}
+\begin{center}
+The language of composite numbers is not regular...
+
+
+\vspace{0.2in}
+
+... but most regex engines can totally match them (in unary).
+
+\vspace{0.2in}
+
+Is this not how everyone spends their Friday nights? 
+\end{center}
 \end{frame}
+
+\begin{frame}
+\frametitle{Regexs = regular languages + other stuff}
+\begin{center}
+Try it! \\
+\vspace{0.2in}
+r' \string^1?\$ $|$ \string^(11$+$?)\textbackslash 1$+$\$'
+\end{center}
+
+\vspace{0.2in}
+\pause
+The first part of the `or', \string^1?\$, matches 0 or 1 as not prime.\\
+\pause
+\vspace{0.2in}
+The second part matches divisors
+\end{frame}
+
+
 
 %-------------------------------------------------------------------
 
+\section{Summary}
+\begin{frame}
+\frametitle{In conclusion...}
+\begin{itemize}
+\item Automata: pretty cool
+\vspace{0.2in}
+\item Regex: also pretty cool
+\vspace{0.2in}
+\item Regular languages: not regex... except for when they are
+\end{itemize}
+\end{frame}
 \end{document}
